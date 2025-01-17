@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places in India</title>
+    
+    <!-- Styles in a <style> tag -->
+    <style>
+        /* Basic styles for header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #8bc2f8;
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #487db3;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav li {
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #ecf0f1;
+            transition: color 0.3s ease;
+        }
+
+        nav li:hover {
+            color: #0c1641;
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        /* Content section */
+        #content {
+            padding: 20px;
+            text-align: center;
+            background-color: #8bc2f8;
+            color: #2c3e50;
+            min-height: 50px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        /* Image Gallery Section */
+        #image-gallery {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
+
+        #image-gallery img {
+            width: 250px;
+            height: 200px;
+            padding: 2px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        #image-gallery img:hover {
+            transform: scale(1.10); /* Slight zoom effect on hover */
+        }
+
+     
+           #container {
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: center;
+               gap: 40px;
+               width: 80%;
+               margin: auto;
+               padding: 20px;
+
+           }
+           .section {
+               background:#A6CDC6;
+               padding: 20px;
+               border-radius: 8px;
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+               width: 45%;
+               text-align: center;
+               box-sizing: border-box;
+
+           }
+           
+       
+
+           h2 {
+               color: #16404D;
+           }
+           ul {
+               list-style-type: square;
+               padding-left: 20px;
+               text-align: left;
+           }
+           footer {
+               text-align: center;
+               padding: 10px;
+               background: #333;
+               color: white;
+               position: relative;
+               bottom: 0;
+               width: 100%;
+           }
+           @media (max-width: 768px) {
+               .section {
+                   width: 100%;
+               }
+           }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore Places in India</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="nav-item" data-content="city">City</li>
+            <li class="nav-item" data-content="state">State</li>
+            <li class="nav-item" data-content="famous">Most Famous Areas</li>
+        </ul>
+    </nav>
+
+    <section id="content">
+        <h2>Welcome to Places in India</h2>
+        <p>Click on a category above to explore more.</p>
+    </section>
+
+    <section id="image-gallery">
+        <!-- Image content will be updated dynamically here -->
+    </section>
+
+    <!-- JavaScript should be placed at the end of the body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentSection = document.getElementById('content');
+            const imageGallery = document.getElementById('image-gallery');
+
+            // Event listener for navigation items
+            navItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const contentType = item.getAttribute('data-content');
+                    changeContent(contentType);
+                });
+            });
+
+            // Function to change the content
+            function changeContent(type) {
+                if (type === 'city') {
+                    contentSection.innerHTML = `
+                        <h2>Top Cities in India</h2>
+                        <p>Discover the vibrant cities of India with rich culture and history.</p>
+                    `;
+                    imageGallery.innerHTML = `
+                               <a href="delhi.html"> <img src="images/delhi.png" alt="Delhi"></a>
+                        <img src="images/mumbai.png" alt="Mumbai">
+                        <img src="images/bangalore.jpg" alt="Bangalore">
+                        <img src="images/kolkata.jpg" alt="Kolkata">
+                        <img src="images/chennai.png" alt="Chennai">
+                        <img src="images/jaipur.png" alt="Jaipur">
+                        <img src="images/agra.png" alt="Agra">
+                        <img src="images/hyderabad.jpg" alt="Hyderabad">
+                        <img src="images/varanasi.jpg" alt="Varanasi ">
+                        <img src="images/goa.png" alt="Goa">
+                       <img src="images/mysore.png" alt="Mysore">
+                        <img src="images/ahmedabad.png" alt="Ahmedabad">
+
+                        
+                    `;
+                } else if (type === 'state') {
+                    contentSection.innerHTML = `
+                        <h2>Famous States in India</h2>
+                        <p>Explore the diverse states of India with different cultures and landscapes.</p>
+                    `;
+                    imageGallery.innerHTML = `
+                        <img src="images/rajasthan.png" alt="Rajasthan">
+                        <img src="images/kerala.png" alt="Kerala">
+                        <img src="images/goaa.png" alt="Goa">
+                        <img src="images/punjab.png" alt="Punjab">
+                        <img src="images/uttarpradesh.png" alt="Uttar Pradesh">
+                        <img src="images/himachalPradesh.png" alt="Himachal Pradesh">
+                        <img src="images/tamilnadu.png" alt="Tamil Nadu">
+                        <img src="images/madhyapradesh.png" alt="Madhya Pradesh">
+                        <img src="images/westbengal.png" alt="West Bengal">
+                        <img src="images/karnataka.png" alt="Karnataka">
+                        <img src="images/jammuandkashmir.png" alt="Jammu and Kashmir">
+                        <img src="images/gujarat.png" alt="Gujarat">
+                        
+                    `;
+                } else if (type === 'famous') {
+                    contentSection.innerHTML = `
+                        <h2>Most Famous Areas in India</h2>
+                        <p>Experience the most iconic and historical places in India.</p>
+                    `;
+                    imageGallery.innerHTML = `
+                        <img src="images/kedarnath.png" alt="Kedarnath">
+                        <img src="images/tajmahal.png" alt="Taj Mahal">
+                        <img src="images/gatewayofindia.png" alt="Gateway of India">
+                        <img src="images/qutubminar.png" alt="Qutub Minar">
+                        <img src="images/redfort.png" alt="Red Fort">
+                        <img src="images/elephatacaves.png" alt="Elephanta Caves">
+                        <img src="images/lahaulandspiti.png" alt="Lahaul and Spiti">
+                        <img src="images/cherrapunji.png" alt="Cherrapunji">
+                        <img src="images/lekladakh.png" alt="Lek Ladakh">
+                        <img src="images/neemrana.png" alt="Neemrana">
+                        <img src="images/dwarkadhish.png" alt="Dwarkadhish">
+                        <img src="images/somnathtemple.png" alt="Somnath Temple">
+
+
+
+                    `;
+                }
+            }
+        });
+    </script>
+   
+ 
+       <div id="container">
+           <div class="section">
+               <h2>Diverse Attractions</h2>
+               <p>India offers a variety of attractions, from serene beaches to towering mountains, and from historical sites to religious pilgrimage spots.</p>
+               <ul>
+                   <li>Beaches: Goa, Kerala</li>
+                   <li>Mountains: Himalayas, Western Ghats</li>
+                   <li>Historical Sites: Red Fort, Qutub Minar</li>
+                   <li>Religious Spots: Varanasi, Bodh Gaya</li>
+               </ul>
+           </div>
+           
+           <div class="section">
+               <h2>Cultural Richness</h2>
+               <p>India is famous for its vibrant festivals, varied cuisines, and traditional art forms.</p>
+               <ul>
+                   <li>Festivals: Diwali, Holi, Navratri</li>
+                   <li>Cuisines: North Indian, South Indian, Street Food</li>
+                   <li>Traditional Arts: Kathak, Bharatanatyam, Madhubani painting</li>
+               </ul>
+           </div>
+           
+        
+           <div class="section">
+               <h2>Spiritual Tourism</h2>
+               <p>India is a prime destination for spiritual seekers, offering places of deep religious and cultural significance.</p>
+               <ul>
+                   <li>Varanasi</li>
+                   <li>Bodh Gaya</li>
+               </ul>
+           </div>
+           
+           <div class="section">
+               <h2>Adventure Tourism</h2>
+               <p>For thrill-seekers, India provides exciting adventure opportunities in various regions.</p>
+               <ul>
+                   <li>Ladakh - Trekking, Biking</li>
+                   <li>Himachal Pradesh - Skiing, Paragliding</li>
+               </ul>
+           </div>
+       </div>
+       
+    
+       
+       <footer>
+           &copy; 2025 Incredible India | All Rights Reserved
+       </footer>
+   </body>
+   </html>
+   

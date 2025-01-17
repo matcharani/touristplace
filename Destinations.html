@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incredible India - Tourism</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #2282ff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            width: 100%;
+        }
+        #search-bar {
+            margin: 20px;
+            text-align: center;
+        }
+        #search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 95%;
+            margin: auto;
+            padding: 10px;
+        }
+        .section {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 85%;
+            text-align: center;
+            box-sizing: border-box;
+            display: none;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+            text-align: left;
+        }
+        footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    position: fixed; /* Fixes footer at the bottom */
+    bottom: 0; /* Align it at the bottom of the viewport */
+    width: 100%;
+}
+        @media (max-width: 768px) {
+            .section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Incredible India - A Land of Diversity</header>
+    
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search destinations..." onkeyup="filterSections()" />
+    </div>
+    
+    <div class="container">
+        <!-- Add all 28 states below -->
+        <div class="section" data-name="andhra pradesh">
+            <h2>Andhra Pradesh - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Tirupati Balaji Temple and explore Chandragiri Fort.</li>
+                <li><strong>Day 2:</strong> Explore Araku Valley and visit Borra Caves.</li>
+                <li><strong>Day 3:</strong> Enjoy the beaches of Visakhapatnam and visit Kailasagiri.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="arunachal pradesh">
+            <h2>Arunachal Pradesh - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Tawang Monastery and Sela Pass.</li>
+                <li><strong>Day 2:</strong> Visit Bumla Pass and Madhuri Lake.</li>
+                <li><strong>Day 3:</strong> Explore Dirang Valley and the ancient Dirang Monastery.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="assam">
+            <h2>Assam - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Kaziranga National Park.</li>
+                <li><strong>Day 2:</strong> Visit Kamakhya Temple and Umananda Island.</li>
+                <li><strong>Day 3:</strong> Relax in the tea gardens of Jorhat.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="bihar">
+            <h2>Bihar - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Bodh Gaya and Mahabodhi Temple.</li>
+                <li><strong>Day 2:</strong> Explore Nalanda University ruins and Rajgir.</li>
+                <li><strong>Day 3:</strong> Visit Patna Sahib and Golghar.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="chhattisgarh">
+            <h2>Chhattisgarh - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Chitrakote Falls and Kanger Valley National Park.</li>
+                <li><strong>Day 2:</strong> Explore Sirpur Archaeological Site and Bhoramdeo Temple.</li>
+                <li><strong>Day 3:</strong> Visit Rajim, the Prayag of Chhattisgarh.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="goa">
+            <h2>Goa - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Relax at Baga Beach, visit Fort Aguada, and enjoy beach shacks.</li>
+                <li><strong>Day 2:</strong> Explore Old Goa’s churches, Basilica of Bom Jesus, and Se Cathedral.</li>
+                <li><strong>Day 3:</strong> Try water sports at Calangute Beach and enjoy Goa’s nightlife.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="gujarat">
+            <h2>Gujarat - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit the Statue of Unity and Sardar Patel’s memorial.</li>
+                <li><strong>Day 2:</strong> Explore Rann of Kutch and the Kutch Desert Festival.</li>
+                <li><strong>Day 3:</strong> Visit Somnath Temple and Dwarkadhish Temple.</li>
+                <li><strong>Day 4:</strong> Enjoy a day at Gir National Park and see Asiatic lions.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="haryana">
+            <h2>Haryana - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Surajkund Mela and explore Sultanpur Bird Sanctuary.</li>
+                <li><strong>Day 2:</strong> Visit Kurukshetra and the Brahma Sarovar.</li>
+                <li><strong>Day 3:</strong> Explore Chandigarh, Sukhna Lake, and Rose Garden.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="himachal pradesh">
+            <h2>Himachal Pradesh - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Shimla and Mall Road.</li>
+                <li><strong>Day 2:</strong> Visit Manali’s Solang Valley and Hidimba Temple.</li>
+                <li><strong>Day 3:</strong> Explore Dharamsala and Dalai Lama Temple.</li>
+                <li><strong>Day 4:</strong> Visit Kullu and the Great Himalayan National Park.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="jharkhand">
+            <h2>Jharkhand - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Ranchi’s Dassam Falls and Jagannath Temple.</li>
+                <li><strong>Day 2:</strong> Explore Netarhat and Lodh Falls.</li>
+                <li><strong>Day 3:</strong> Visit Hazaribagh and its wildlife sanctuary.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="karnataka">
+            <h2>Karnataka - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Bangalore’s Lalbagh Botanical Garden and Vidhana Soudha.</li>
+                <li><strong>Day 2:</strong> Visit Mysore Palace and Chamundi Hill.</li>
+                <li><strong>Day 3:</strong> Explore Hampi’s ruins and Virupaksha Temple.</li>
+                <li><strong>Day 4:</strong> Relax at Coorg and enjoy the coffee plantations.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="kerala">
+            <h2>Kerala - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Experience houseboat rides in Alleppey backwaters.</li>
+                <li><strong>Day 2:</strong> Visit Munnar’s tea gardens and Eravikulam National Park.</li>
+                <li><strong>Day 3:</strong> Explore Thekkady’s wildlife and take a Periyar Lake boat ride.</li>
+                <li><strong>Day 4:</strong> Relax at Kovalam Beach and explore Trivandrum’s temples.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="madhya pradesh">
+            <h2>Madhya Pradesh - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Khajuraho Temples and Panna National Park.</li>
+                <li><strong>Day 2:</strong> Explore Sanchi Stupa and Bhimbetka Caves.</li>
+                <li><strong>Day 3:</strong> Visit Kanha National Park and Bandhavgarh National Park.</li>
+                <li><strong>Day 4:</strong> Visit Ujjain and Mahakaleshwar Temple.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="maharashtra">
+            <h2>Maharashtra - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Gateway of India and Elephanta Caves.</li>
+                <li><strong>Day 2:</strong> Explore Ajanta and Ellora Caves.</li>
+                <li><strong>Day 3:</strong> Visit Lonavala and the Karla Caves.</li>
+                <li><strong>Day 4:</strong> Enjoy the beaches of Goa and relax at Alibaug.</li>
+            </ul>
+        </div>
+
+        <div class="section" data-name="manipur">
+            <h2>Manipur - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Loktak Lake and the Keibul Lamjao National Park.</li>
+                <li><strong>Day 2:</strong> Explore Imphal War Cemetery and Kangla Fort.</li>
+                <li><strong>Day 3:</strong> Visit Shree Govindajee Temple and the INA Memorial.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="meghalaya">
+            <h2>Meghalaya - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Shillong and visit Elephant Falls.</li>
+                <li><strong>Day 2:</strong> Visit Cherrapunji and explore the living root bridges.</li>
+                <li><strong>Day 3:</strong> Enjoy a trip to Mawlynnong Village and Dawki.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="mizoram">
+            <h2>Mizoram - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Aizawl and visit Mizoram State Museum.</li>
+                <li><strong>Day 2:</strong> Visit Tamdil Lake and Khawnglung Wildlife Sanctuary.</li>
+                <li><strong>Day 3:</strong> Explore the Durtlang Hills and the Murlen National Park.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="nagaland">
+            <h2>Nagaland - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Kohima War Cemetery and explore the local markets.</li>
+                <li><strong>Day 2:</strong> Explore the village of Kisama and attend the Hornbill Festival.</li>
+                <li><strong>Day 3:</strong> Visit the Dzukou Valley and the Japfu Peak.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="odisha">
+            <h2>Odisha - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Konark Sun Temple and Puri Beach.</li>
+                <li><strong>Day 2:</strong> Explore Chilika Lake and the Nalabana Bird Sanctuary.</li>
+                <li><strong>Day 3:</strong> Visit the Jagannath Temple and the Udayagiri and Khandagiri Caves.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="punjab">
+            <h2>Punjab - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit the Golden Temple and Jallianwala Bagh in Amritsar.</li>
+                <li><strong>Day 2:</strong> Explore the Wagah Border and the Punjab State War Heroes Memorial.</li>
+                <li><strong>Day 3:</strong> Visit Anandpur Sahib and explore the Qila Mubarak complex in Patiala.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="rajasthan">
+            <h2>Rajasthan - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Jaipur’s Amber Fort and Hawa Mahal.</li>
+                <li><strong>Day 2:</strong> Explore Udaipur’s City Palace and Fateh Sagar Lake.</li>
+                <li><strong>Day 3:</strong> Visit Jodhpur’s Mehrangarh Fort and Clock Tower.</li>
+                <li><strong>Day 4:</strong> Explore Jaisalmer and the Golden Fort.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="sikkim">
+            <h2>Sikkim - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Tsomgo Lake and Baba Mandir.</li>
+                <li><strong>Day 2:</strong> Explore Gangtok’s Rumtek Monastery and Tashi View Point.</li>
+                <li><strong>Day 3:</strong> Visit Nathula Pass and enjoy the scenic beauty of Yumthang Valley.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="tamil nadu">
+            <h2>Tamil Nadu - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Chennai’s Marina Beach and Kapaleeshwarar Temple.</li>
+                <li><strong>Day 2:</strong> Explore Mahabalipuram’s Shore Temple and Arjuna’s Penance.</li>
+                <li><strong>Day 3:</strong> Visit Madurai’s Meenakshi Temple and Thirumalai Nayak Palace.</li>
+                <li><strong>Day 4:</strong> Explore Ooty and enjoy the scenic beauty of Nilgiri Hills.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="telangana">
+            <h2>Telangana - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Hyderabad’s Charminar and Golconda Fort.</li>
+                <li><strong>Day 2:</strong> Explore Ramoji Film City and the Salar Jung Museum.</li>
+                <li><strong>Day 3:</strong> Visit the Bhongir Fort and the Pochampally Silk Weaving Village.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="tripura">
+            <h2>Tripura - 3 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Ujjayanta Palace and Neermahal.</li>
+                <li><strong>Day 2:</strong> Explore Tripura Sundari Temple and Sepahijala Wildlife Sanctuary.</li>
+                <li><strong>Day 3:</strong> Visit the Jampui Hills and the Unakoti Temple.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="uttarakhand">
+            <h2>Uttarakhand - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Haridwar and Rishikesh, and enjoy the Ganga Aarti.</li>
+                <li><strong>Day 2:</strong> Explore Nainital and Naini Lake.</li>
+                <li><strong>Day 3:</strong> Visit Mussoorie and enjoy the views from Kempty Falls.</li>
+                <li><strong>Day 4:</strong> Visit Jim Corbett National Park and enjoy a wildlife safari.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="uttar pradesh">
+            <h2>Uttar Pradesh - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Visit Taj Mahal and Agra Fort in Agra.</li>
+                <li><strong>Day 2:</strong> Explore Varanasi’s ghats and Kashi Vishwanath Temple.</li>
+                <li><strong>Day 3:</strong> Visit Mathura and Vrindavan.</li>
+                <li><strong>Day 4:</strong> Visit Lucknow’s Bara Imambara and Chota Imambara.</li>
+            </ul>
+        </div>
+        
+        <div class="section" data-name="west bengal">
+            <h2>West Bengal - 4 Day Plan</h2>
+            <ul>
+                <li><strong>Day 1:</strong> Explore Kolkata’s Howrah Bridge and Victoria Memorial.</li>
+                <li><strong>Day 2:</strong> Visit Sundarbans National Park and enjoy a boat ride.</li>
+                <li><strong>Day 3:</strong> Visit Darjeeling’s Tiger Hill and Batasia Loop.</li>
+                <li><strong>Day 4:</strong> Explore Kalimpong and enjoy the scenic beauty of the tea gardens.</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <footer>
+        &copy; 2025 Incredible India | All Rights Reserved
+    </footer>
+
+    <script>
+        function filterSections() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+            
+            sections.forEach(section => {
+                const name = section.getAttribute('data-name').toLowerCase();
+                if (name.includes(searchInput) || searchInput === "") {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

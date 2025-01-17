@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incredible India - Tourism</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #2282ff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            width: 100%;
+        }
+        #select-bar {
+            margin: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        #destination-select {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            width: 50%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        #destination-select:focus {
+            outline: none;
+            border-color: #2282ff;
+            box-shadow: 0 0 5px rgba(34, 130, 255, 0.5);
+        }
+        #map {
+            height: 500px;
+            width: 80%;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        #travel-time {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>Incredible India - A Land of Diversity</header>
+    
+    <div id="select-bar">
+        <select id="destination-select" onchange="selectPlace()">
+            <option value="">Select a destination</option>
+            <!-- Options will be populated by JavaScript -->
+        </select>
+    </div>
+    
+    <!-- Leaflet Map Container -->
+    <div id="map"></div>
+
+    <div id="travel-time"></div>
+
+    <footer>
+        <p>&copy; 2025 Incredible India. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Set map view to India
+
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define locations (coordinates of popular places in India)
+        var locations = [
+            { name: "Andhra Pradesh", coordinates: [15.9129, 79.7400] },
+            { name: "Arunachal Pradesh", coordinates: [27.1262, 93.3655] },
+            { name: "Assam", coordinates: [26.2006, 92.9376] },
+            { name: "Bihar", coordinates: [25.0961, 85.3131] },
+            { name: "Chhattisgarh", coordinates: [21.2787, 81.8661] },
+            { name: "Goa", coordinates: [15.2993, 74.1240] },
+            { name: "Gujarat", coordinates: [22.2587, 71.1924] },
+            { name: "Haryana", coordinates: [29.0588, 76.0856] },
+            { name: "Himachal Pradesh", coordinates: [32.0657, 77.3910] },
+            { name: "Jharkhand", coordinates: [23.6102, 85.2799] },
+            { name: "Karnataka", coordinates: [12.9716, 77.5946] },
+            { name: "Kerala", coordinates: [10.8505, 76.2711] },
+            { name: "Madhya Pradesh", coordinates: [23.4735, 77.9479] },
+            { name: "Maharashtra", coordinates: [19.0760, 72.8777] },
+            { name: "Manipur", coordinates: [24.6637, 93.9063] },
+            { name: "Meghalaya", coordinates: [25.4670, 91.3662] },
+            { name: "Mizoram", coordinates: [23.1645, 92.9376] },
+            { name: "Nagaland", coordinates: [26.1584, 94.5624] },
+            { name: "Odisha", coordinates: [20.9517, 85.0985] },
+            { name: "Punjab", coordinates: [31.1471, 75.3412] },
+            { name: "Rajasthan", coordinates: [27.0238, 74.2179] },
+            { name: "Sikkim", coordinates: [27.5330, 88.5122] },
+            { name: "Tamil Nadu", coordinates: [11.1271, 78.6569] },
+            { name: "Telangana", coordinates: [17.3588, 78.4753] },
+            { name: "Tripura", coordinates: [23.9408, 91.9882] },
+            { name: "Uttar Pradesh", coordinates: [26.8467, 80.9462] },
+            { name: "Uttarakhand", coordinates: [30.0668, 79.0193] },
+            { name: "West Bengal", coordinates: [22.9868, 87.8550] }
+        ];
+
+        // Populate the select dropdown with options
+        var selectElement = document.getElementById("destination-select");
+        locations.forEach(function(location) {
+            var option = document.createElement("option");
+            option.value = JSON.stringify(location.coordinates); // Store coordinates as string
+            option.textContent = location.name;
+            selectElement.appendChild(option);
+        });
+
+        // Function to handle the selection of a destination
+        function selectPlace() {
+            var selectedValue = document.getElementById('destination-select').value;
+
+            if (selectedValue) {
+                var coordinates = JSON.parse(selectedValue); // Parse the stored coordinates
+                var selectedLocation = locations.find(function(location) {
+                    return JSON.stringify(location.coordinates) === selectedValue;
+                });
+
+                if (selectedLocation) {
+                    // Zoom to the selected location and display the marker
+                    map.setView(coordinates, 10); // Zoom in level 10
+                    markers.forEach(function(item) {
+                        if (item.location === selectedLocation) {
+                            item.marker.openPopup();
+                            // Fetch user's live location and calculate travel time
+                            getUserLocationAndTravelTime(coordinates);
+                        } else {
+                            item.marker.closePopup();
+                        }
+                    });
+                }
+            }
+        }
+
+        // Create markers and save them in a global variable
+        var markers = locations.map(function(location) {
+            var marker = L.marker(location.coordinates)
+                .bindPopup('<b>' + location.name + '</b>');
+            return { marker: marker, location: location };
+        });
+
+        // Add all markers to the map
+        markers.forEach(function(item) {
+            item.marker.addTo(map);
+        });
+
+        // Function to get the user's current location and calculate travel time and path using Leaflet Routing Machine
+        function getUserLocationAndTravelTime(destinationCoordinates) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var userLatitude = position.coords.latitude;
+                    var userLongitude = position.coords.longitude;
+
+                    // Add user's location marker
+                    L.marker([userLatitude, userLongitude]).addTo(map)
+                        .bindPopup("You are here").openPopup();
+
+                    // Calculate the route using Leaflet Routing Machine
+                    var routeControl = L.Routing.control({
+                        waypoints: [
+                            L.latLng(userLatitude, userLongitude), // User's current location
+                            L.latLng(destinationCoordinates[0], destinationCoordinates[1]) // Destination
+                        ],
+                        routeWhileDragging: true
+                    }).addTo(map);
+
+                    // Display travel time (the time is calculated by the Leaflet Routing Machine)
+                    routeControl.on('routesfound', function(e) {
+                        var travelTime = e.routes[0].summary.totalTime / 60; // Time in minutes
+                        document.getElementById('travel-time').textContent = `Estimated travel time: ${Math.round(travelTime)} minutes`;
+                    });
+                }, function() {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+    </script>
+</body>
+</html>

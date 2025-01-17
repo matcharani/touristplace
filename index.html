@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style>
+    /* Header Styles */
+header {
+    background-color: rgba(215, 241, 243, 0.7);
+    color: white;
+    position: fixed;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center; /* Center the header content */
+}
+
+/* Header Text Styles */
+header h1 {
+    font-size: 30px;
+    color: #043d5e;
+    text-align: center; /* Center align the text */
+    margin: 40; /* Remove default margin */
+}
+h3 ,h4.outer{
+    font-size: 20px;
+    color: #0673b3;
+    text-align: center; /* Center align the text */
+}
+     
+
+h2.outer {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #043d5e; /* Deep blue color for headings */
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Paragraph Styles */
+p.outer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #555; /* Soft gray color for paragraphs */
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 auto 20px;
+    max-width: 800px;
+}
+     nav {
+    display: flex;
+    padding-left: 450px;
+    align-items: center;
+    gap: 20px; /* Adds space between links */
+}
+
+
+        nav a {
+            padding: 10 30px;
+            color: #5c8cf5;
+            
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            color: #0651f3; /* Hover effect for links */
+        }
+
+        .slider-container {
+            width: 100%;
+            margin: 100px auto;
+            position: relative;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 20px;
+            left: 500px;
+            color: #ffffff;
+            background-color: rgba(25, 25, 27, 0.329);
+            padding: 10px;
+            font-weight: 100;
+            border-radius: 5px;
+        }
+img{
+    width: 100%;
+    height: 500px; 
+}
+        /* Hide all images initially */
+        .slider-images {
+            display: none;
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+
+        }
+              /* Navigation buttons */
+              .prev, .next {
+            position: absolute;
+            top: 50%;
+            font-size: 18px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Button Hover Effect */
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Travel Guides</title>
+</head>
+<body>
+    <header>
+            <h1>Travel Guide</h1>
+        <nav>
+            <a href="home.html">Places > </a>
+            <a href="destinations.html">Destinations > </a>
+            <a href="traveltip.html">Plans > </a>
+            <a href="traveltips.html">Travel Tips > </a>
+        </nav>
+     
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <marquee behavior="scroll" direction="left" style="font-size: 20px; color: #043d5e;">The journey of a thousand miles begins with a single step!</marquee>
+   <h2  class="outer"> India is known for its rich cultural heritage and an element of mysticism </h2>
+   <h4  class="outer">Explore the Incredible India!</h4>
+        <p  class="outer">Discover the rich history, diverse culture, and breathtaking landscapes that make India a must-visit destination. From the majestic Himalayas to the serene beaches, vibrant cities to peaceful temples, there's something for everyone!</p>
+     <!-- Image Slider Container -->
+     <div class="slider-container">
+        <div class="slider-images">
+            <img src="images/india1.jpg" alt="Destination 1">
+            <div class="slide-content">
+                <h2>Explore the Majestic Himalayas</h2>
+                <p>Experience the beauty of the highest mountains on Earth.</p>
+            </div>
+        </div>
+        
+        <div class="slider-images">
+            <img src="images/india2.jpg" alt="Destination 2">
+            <div class="slide-content">
+                <h2>Serene Beaches of Goa</h2>
+                <p>Relax and unwind at the golden beaches of Goa.</p>
+            </div>
+        </div>
+
+        <div class="slider-images">
+            <img src="images/india3.jpg" alt="Destination 3">
+            <div class="slide-content">
+                <h2>The Temples of South India</h2>
+                <p>Discover the rich cultural heritage and temples of the South.</p>
+            </div>
+        </div>
+        <div class="slider-images">
+            <img src="images/india4.jpg" alt="Destination 4">
+            <div class="slide-content">
+                <h2>The Golden Deserts</h2>
+                <p>Experience the vastness and beauty of the world's<br>
+                     most famous deserts and embrace the adventure.</p>
+            </div>
+            
+        </div>
+        <div class="slider-images">
+            <img src="images/india5.png" alt="Destination 5">
+        <div class="slide-content">
+            <h2>Wildlife Adventures in National Parks</h2>
+            <p>Discover the wildlife and natural beauty of<br>
+                 some of the world’s most famous national parks.</p>
+        </div>
+    </div>
+        
+        <!-- Slider Navigation -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        // JavaScript to control the slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-images');
+        const totalSlides = slides.length;
+
+        // Function to change slide
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            }
+            if (index < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[currentSlide].style.display = 'block';
+        }
+
+        // Move to next or previous slide
+        function moveSlide(step) {
+            currentSlide += step;
+            showSlide(currentSlide);
+        }
+
+        // Initially show the first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+
+</html>
+
